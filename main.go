@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"go-oss/bootstrap"
+	"go-oss/config"
+	c "go-oss/pkg/config"
+)
+
+func init() {
+	// 初始化配置信息
+	config.Initialize()
+}
 
 func main() {
-	fmt.Println("The OSS by Golang")
+	bootstrap.SetupRoute().Run(c.GetString("app.port"))
 }
